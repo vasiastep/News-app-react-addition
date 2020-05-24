@@ -120,3 +120,12 @@ code {
   display: flex;
   justify-content: space-between;
 }
+
+.news-block {
+  transition: .1s ease all;
+}
+
+.news-block:hover {
+  cursor: pointer;
+  background-color: rgb(224, 224, 224);
+}
