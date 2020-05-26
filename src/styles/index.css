@@ -18,7 +18,7 @@ code {
 }
 
 .header {
-  background: url('./assets/header.jpg') no-repeat 50% 50%;
+  background: url('../assets/header.jpg') no-repeat 50% 50%;
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -88,25 +88,25 @@ code {
 .instagram {
   height: 40px;
   width: 40px;
-  background: url('./assets/instagram.png') no-repeat;
+  background: url('../assets/instagram.png') no-repeat;
   background-size: cover;
 }
 .facebook {
   height: 40px;
   width: 40px;
-  background: url('./assets/facebook.png') no-repeat;
+  background: url('../assets/facebook.png') no-repeat;
   background-size: cover;
 }
 .linkedIn {
   height: 40px;
   width: 40px;
-  background: url('./assets/linkedIn.png') no-repeat;
+  background: url('../assets/linkedIn.png') no-repeat;
   background-size: cover;
 }
 .github {
   height: 40px;
   width: 40px;
-  background: url('./assets/github.png') no-repeat;
+  background: url('../assets/github.png') no-repeat;
   background-size: cover;
 }
 
@@ -121,11 +121,41 @@ code {
   justify-content: space-between;
 }
 
+
+/********************** NEWS PAGE **********************/
 .news-block {
   transition: .1s ease all;
 }
 
 .news-block:hover {
   cursor: pointer;
+  background-color: rgb(206, 206, 206);
+}
+
+.darken {
   background-color: rgb(224, 224, 224);
 }
+
+.news-header {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../assets/newspaper.jpg') no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.news-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;bottom: 0;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 1;
+}
+
+.news-header__text {
+  z-index: 5;
+}
+/********************** NEWS PAGE **********************/

@@ -3,39 +3,51 @@ import {NewsContext} from '../context/News/NewsContext'
 
 export const Form = () => {
 
-    const languages = ['ua', 'ru', 'us', 'it', 'de', 'pl', 'gb', 'cn']
-    const spheres = ['general', 'technology', 'business', 'science', 'sports', 'entertainment', 'health']
+    const languages = ['Select language', 'ua', 'ru', 'us', 'it', 'de', 'pl', 'gb', 'cn']
+    const spheres = ['Select sphere', 'general', 'technology', 'business', 'science', 'sports', 'entertainment', 'health']
     
-    const [keyword, setKeyword] = useState('')
-    const [language, setLanguage] = useState('ua')
-    const [sphere, setSphere] = useState('general')
+    const [keyword, setKeyword] = useState(localStorage.getItem('options') 
+    ? JSON.parse(localStorage.getItem('options')).keyword
+    : ''
+    )
+    const [language, setLanguage] = useState(
+        localStorage.getItem('options') 
+        ? JSON.parse(localStorage.getItem('options')).language 
+        : 'us'
+    )
+    const [sphere, setSphere] = useState(
+        localStorage.getItem('options') 
+        ? JSON.parse(localStorage.getItem('options')).sphere 
+        : 'technology'
+    )
 
     const {fetchNews} = useContext(NewsContext)
     
     useEffect(() => {
-        // console.log(language);
-        // console.log(sphere);
-    }, [language, sphere])
+        console.log(language);
+        console.log(sphere);
+        
+        const options = {keyword, language, sphere}
+        localStorage.setItem('options', JSON.stringify(options))
+
+    }, [keyword, language, sphere])
 
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log( language )
-        console.log( sphere )
-        console.log( keyword )
 
         // Send request
         fetchNews(keyword || '', language, sphere)
     }
 
     return (
-        <div className="container">
+        <div className="container mt-4">
             <form onSubmit={submitHandler}>
                 <div className="form-row align-items-center">
                     <div className="col-3 my-1">
                         <input 
                             className="form-control" 
-                            placeholder="Not required..."
+                            placeholder="Key words (not required)"
                             value={keyword}
                             onChange={e => setKeyword(e.target.value)}
                         />
@@ -47,8 +59,8 @@ export const Form = () => {
                             onChange={e => setLanguage(e.target.value)}
                             value={language}
                         >
-                            {languages.map(lang => (
-                                <option key={lang}>{lang}</option>
+                            {languages.map((lang, index) => (
+                                <option disabled={index === 0} key={lang}>{lang}</option>
                             ))}
                         </select>
                     </div>
@@ -59,8 +71,8 @@ export const Form = () => {
                             value={sphere}
                             onChange={e => setSphere(e.target.value)}
                         >
-                            {spheres.map( zone => (
-                                <option key={zone}>{zone}</option>
+                            {spheres.map((zone, index) => (
+                                <option disabled={index === 0} key={zone}>{zone}</option>
                             ))}
                         </select>
                     </div>

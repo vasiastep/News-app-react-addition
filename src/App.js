@@ -5,6 +5,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import {HomePage} from './pages/HomePage'
 import {NewsPage} from './pages/NewsPage'
 import { NewsContextProvider } from './context/News/NewsContext'
+import { ModalProvider } from './context/Modal/ModalContext'
 
 
 function App() {
@@ -19,9 +20,11 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/read-news">
-          <NewsContextProvider>
-            <NewsPage />
-          </NewsContextProvider>
+          <ModalProvider>
+            <NewsContextProvider>
+              <NewsPage />
+            </NewsContextProvider>
+          </ModalProvider>
         </Route>
         <Redirect to="/"/>
       </Switch>

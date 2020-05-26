@@ -5,14 +5,13 @@ import { NewsReducer } from './NewsReducer'
 export const NewsContext = React.createContext()
 
 // initial state of news
-const initialState = {
+const initialNewsState = {
     news: []
 }
 
-
 export const NewsContextProvider = ({children}) => {
 
-    const [state, dispatch] = useReducer(NewsReducer, initialState)
+    const [state, dispatch] = useReducer(NewsReducer, initialNewsState)
 
     const fetchNews = async (keyword = '', language, sphere) => {
 
