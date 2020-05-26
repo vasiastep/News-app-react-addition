@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import {NewsContext} from '../context/News/NewsContext'
+import { NewsContext } from '../context/News/NewsContext'
+import { ThemeContext } from '../context/Theme/ThemeContext'
 
 export const Form = () => {
 
@@ -21,17 +22,18 @@ export const Form = () => {
         : 'technology'
     )
 
-    const {fetchNews} = useContext(NewsContext)
+    const { fetchNews, disabled } = useContext(NewsContext)
+    const { darkTheme } = useContext(ThemeContext)
     
     useEffect(() => {
-        console.log(language);
-        console.log(sphere);
-        
         const options = {keyword, language, sphere}
         localStorage.setItem('options', JSON.stringify(options))
 
     }, [keyword, language, sphere])
 
+    useEffect(() => {
+        console.log( disabled )
+    }, [disabled])
 
     const submitHandler = (event) => {
         event.preventDefault()
@@ -79,7 +81,8 @@ export const Form = () => {
                     <div className="col-auto my-1">
                         <button 
                             type="submit" 
-                            className="btn btn-primary"
+                            className={`btn no-border text-white ${disabled ? 'disabled' : ''} ${ darkTheme ? 'dark-theme-background' : 'light-theme-background'}`}
+                            disabled={disabled}
                         >Read</button>
                     </div>
                 </div>

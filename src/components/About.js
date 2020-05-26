@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../context/Theme/ThemeContext'
 
 export const About = () => {
+    const { darkTheme } = useContext(ThemeContext)
+
     return (
-        <div className="container about">
-            <div className="about__content">Folow me on:
+        <div className={`about ${ darkTheme && 'bg-dark' }`}>
+            <div className={`about__content ${ darkTheme && 'text-white' }`}>Folow me on:
                 <ul className="about__list">
                     <li><a href="https://www.instagram.com/stepanov.vasya/" rel="noopener noreferrer" target="_blank">
                         <div className="instagram"></div>

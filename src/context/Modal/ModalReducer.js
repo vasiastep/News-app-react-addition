@@ -1,4 +1,4 @@
-import { SHOW_MODAL, HIDE_MODAL } from "../constants";
+import { SHOW_MODAL, HIDE_MODAL } from "../urls_and_types";
 
 export const ModalReducer = (state, action) => {
     switch (action.type) {

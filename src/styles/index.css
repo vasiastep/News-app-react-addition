@@ -102,6 +102,7 @@ code {
   width: 40px;
   background: url('../assets/linkedIn.png') no-repeat;
   background-size: cover;
+  transform: scale(1.4);
 }
 .github {
   height: 40px;
@@ -119,6 +120,22 @@ code {
   padding: 20px 30px;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(167, 167, 167);
+}
+
+.dark-theme-background {
+  background: linear-gradient(to right, #DCA008, #96314F)
+}
+.light-theme-background {
+  background: linear-gradient(to right, #639313, rgb(29, 139, 57))
+}
+
+.dark-footer {
+  background-color: #1E1E1E;
+}
+
+.no-border {
+  border: none !important;
 }
 
 
@@ -132,9 +149,17 @@ code {
   background-color: rgb(206, 206, 206);
 }
 
+.news-block.text-white:hover > p {
+  color: #000;
+}
+
 .darken {
   background-color: rgb(224, 224, 224);
 }
+.dark-theme-darken {
+  background-color: #1E1E1E;
+}
+
 
 .news-header {
   height: 50vh;

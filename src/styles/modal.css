@@ -52,7 +52,7 @@
     transform: translateY(50px);
     animation-duration: .4s;
     padding-bottom: 10px;
-    transition: .1s;
+    transition: .3s;
 }
 .modal-window-header{
     display: flex;

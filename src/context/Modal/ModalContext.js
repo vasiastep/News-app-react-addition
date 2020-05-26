@@ -1,6 +1,6 @@
 import React, {createContext, useReducer} from 'react'
 import { ModalReducer } from './ModalReducer'
-import { SHOW_MODAL, HIDE_MODAL } from '../constants'
+import { SHOW_MODAL, HIDE_MODAL } from '../urls_and_types'
 
 export const ModalContext = createContext()
 
@@ -19,7 +19,10 @@ export const ModalProvider = ({ children }) => {
 
     return (
         <ModalContext.Provider value={{
-            showModal, hideModal, isOpened: state.opened, element: state.element
+            showModal, 
+            hideModal, 
+            isOpened: state.opened, 
+            element: state.element
         }}>
             { children }
         </ModalContext.Provider>
