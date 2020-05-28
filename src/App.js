@@ -26,7 +26,7 @@ function App() {
 								</NewsContextProvider>
 							</ModalProvider>
 						</Route>
-						<Redirect to="/" />
+						<Redirect to="/read-news" />
 					</Switch>
 				</ThemeContextProvider>
 			</BrowserRouter>
