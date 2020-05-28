@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Form } from '../components/Form'
 import { NewsContainer } from '../components/NewsContainer'
 import { PageHeader } from '../components/PageHeader'
 import { ToolBar } from '../components/ToolBar'
-import { ModalProvider } from '../context/Modal/ModalContext'
-import { NewsContextProvider } from '../context/News/NewsContext'
+import { NewsContext } from '../context/News/NewsContext'
+import { Loader } from '../components/Loader'
 
 export const NewsPage = () => {
-    return (
-        <ModalProvider>
-            <NewsContextProvider>
-                <ToolBar />
-                <PageHeader />
-                <Form />
-                <NewsContainer />
-            </NewsContextProvider>
-        </ModalProvider>
-    )
+	const { loading } = useContext(NewsContext)
+	return (
+		<>
+			{loading ? <Loader /> : null}
+			<ToolBar />
+			<PageHeader />
+			<Form />
+			<NewsContainer />
+		</>
+	)
 }

@@ -184,4 +184,20 @@ code {
 .news-header__text {
   z-index: 5;
 }
-/********************** NEWS PAGE **********************/
+/********************** /NEWS PAGE **********************/
+
+/******************* LOADER ********************/
+
+.loader-overlay {
+  display: flex;
+  height: 100vh;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  margin-top: 140px;
+}
+
+/******************* /LOADER ********************/
