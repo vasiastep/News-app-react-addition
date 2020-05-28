@@ -1,0 +1,9 @@
+@font-face{
+    font-family: 'PlayFair';
+    src: url('../assets/PlayfairDisplaySC-Regular.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'OldStandard';
+    src: url('../assets/OldStandardTT-Regular.ttf') format('truetype');
+}

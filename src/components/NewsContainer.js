@@ -7,9 +7,10 @@ import { ThemeContext } from '../context/Theme/ThemeContext'
 
 
 export const NewsContainer = () => {
-    const { news } = useContext(NewsContext)
+    const { news, error } = useContext(NewsContext)
     const { darkTheme } = useContext(ThemeContext)
     const { isOpened, element } = useContext(ModalContext)
+    const { showModal } = useContext(ModalContext)
 
     const [ modalPosition, setModalPosition ] = useState(window.scrollY)
 
@@ -36,16 +37,32 @@ export const NewsContainer = () => {
     }, [darkTheme])
 
     useEffect(() => {
+        if( JSON.parse( localStorage.getItem('data') ) && !news.length ) {
+            showModal({ title: 'No news for your request, try find something another.' })
+        }
+        // eslint-disable-next-line
+    }, [news])
+
+    useEffect(() => {
         const timeNow = new Date().getMinutes()
 
-        if( timeNow - JSON.parse( localStorage.getItem('timeOfRequest')) >= 10  || 
-            timeNow - JSON.parse( localStorage.getItem('timeOfRequest')) < 0 
+        if( JSON.parse( localStorage.getItem('timeOfRequest')) && (
+            timeNow - JSON.parse( localStorage.getItem('timeOfRequest')) >= 10  || 
+            timeNow - JSON.parse( localStorage.getItem('timeOfRequest')) < 0 )
         ) {
             localStorage.removeItem('data')
             localStorage.removeItem('timeOfRequest')
+            showModal({ title: 'It\'s time to refresh your news list. There might be somithing interresting.' })
         }
         // eslint-disable-next-line
     }, [])
+
+    useEffect(() => {
+        if( error ) {
+            showModal({ title: 'Something went wrong, try again. But firstly, check your internet connection.' })
+        }
+        // eslint-disable-next-line
+    }, [error])
 
     return (
         <>

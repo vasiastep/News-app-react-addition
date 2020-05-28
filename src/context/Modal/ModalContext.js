@@ -13,7 +13,7 @@ export const ModalProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(ModalReducer, initialModalState)
 
-    const showModal = (newsItem) => dispatch({type: SHOW_MODAL, payload: newsItem})
+    const showModal = (newsItem = {}) => dispatch({type: SHOW_MODAL, payload: newsItem})
     
     const hideModal = () => dispatch({type: HIDE_MODAL})
 

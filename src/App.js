@@ -1,11 +1,8 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import {HomePage} from './pages/HomePage'
 import {NewsPage} from './pages/NewsPage'
-import { NewsContextProvider } from './context/News/NewsContext'
-import { ModalProvider } from './context/Modal/ModalContext'
 import {ThemeContextProvider} from './context/Theme/ThemeContext'
 
 
@@ -16,24 +13,17 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      <Switch>
-        <ThemeContextProvider>
+      <ThemeContextProvider>
+        <Switch>
           <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route path="/read-news">
-            <ModalProvider>
-              <NewsContextProvider>
-                <NewsPage />
-              </NewsContextProvider>
-            </ModalProvider>
+          <Route path="/read-news" exact>
+            <NewsPage />
           </Route>
-          <Route>
-            <Redirect to="/"/>
-          </Route>
-        </ThemeContextProvider>
-      </Switch>
-
+          <Redirect to="/"/>
+        </Switch>
+      </ThemeContextProvider>
     </BrowserRouter>
     </>
   );

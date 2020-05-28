@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { FETCH_URL, API_KEY, FETCH_NOTES, TOGGLE_BTN } from '../urls_and_types'
+import { FETCH_URL, API_KEY, FETCH_NOTES, TOGGLE_BTN, SET_ERROR } from '../urls_and_types'
 import { NewsReducer } from './NewsReducer'
 
 export const NewsContext = React.createContext()
@@ -8,6 +8,7 @@ export const NewsContext = React.createContext()
 const initialNewsState = {
     news: JSON.parse( localStorage.getItem('data') ) || [],
     disabledBtn: false,
+    error: false
 }
 
 export const NewsContextProvider = ({children}) => {
@@ -36,11 +37,9 @@ export const NewsContextProvider = ({children}) => {
                 dispatch({ type: TOGGLE_BTN })
             })
         .catch(err => {
-            
+            dispatch({ type: SET_ERROR })
+            dispatch({ type: TOGGLE_BTN })
         })
-
-
-
     }
 
     return (
@@ -48,6 +47,7 @@ export const NewsContextProvider = ({children}) => {
             fetchNews, 
             news: state.news || [], 
             disabled: state.disabledBtn,
+            error: state.error
         }}>
             {children}
         </NewsContext.Provider>

@@ -31,13 +31,8 @@ export const Form = () => {
 
     }, [keyword, language, sphere])
 
-    useEffect(() => {
-        console.log( disabled )
-    }, [disabled])
-
     const submitHandler = (event) => {
         event.preventDefault()
-
         // Send request
         fetchNews(keyword || '', language, sphere)
     }
