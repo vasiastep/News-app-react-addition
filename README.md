@@ -1,3 +1,3 @@
 # News-app-react-addition
-Try it now: 
+Check it now: 
 https://friendly-meitner-1a0a2e.netlify.app/
